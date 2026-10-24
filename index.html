@@ -210,91 +210,99 @@ strong{color:#E6EBF6;font-weight:400}
 }
 
 /* ============ HERO ============ */
-.hero{position:relative;padding:clamp(94px,11vh,118px) 0 clamp(40px,4.5vh,58px);overflow:clip}
-.hero::before{
-  content:"";position:absolute;inset:-10% -5% auto -5%;height:130%;z-index:-2;
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;overflow:clip;
+  padding:clamp(112px,14vh,150px) 0 clamp(104px,13vh,132px);
   background:
-    radial-gradient(60% 55% at 22% 10%,rgba(34,58,126,.55) 0%,transparent 62%),
-    radial-gradient(45% 40% at 86% 72%,rgba(208,140,94,.12) 0%,transparent 64%),
-    linear-gradient(180deg,#080D20 0%,#070B1A 60%);
+    radial-gradient(ellipse at 0% 62%,rgba(40,101,195,.42),transparent 44%),
+    radial-gradient(ellipse at 44% 108%,rgba(16,48,95,.45),transparent 56%),
+    linear-gradient(125deg,#0b1321 0%,#070b13 47%,#050810 100%);
 }
-.hero-inner{
-  position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;
-  padding:clamp(22px,2.4vw,32px) clamp(20px,4vw,56px);
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,transparent 0%,rgba(3,5,9,.04) 36%,rgba(3,5,9,.74) 100%);
 }
-/* molduras finas de "convite" */
-.hero-inner::before,.hero-inner::after{
-  content:"";position:absolute;top:0;bottom:0;width:1px;
-  background:linear-gradient(180deg,transparent,var(--hair-cu) 22%,var(--hair-cu) 78%,transparent);
-}
-.hero-inner::before{left:0}
-.hero-inner::after{right:0}
 
-/* ---- rei de xadrez em 3D (WebGL) ---- */
-.chess{
-  position:relative;width:clamp(170px,19vw,250px);height:clamp(180px,26vh,250px);
-  margin:0 auto clamp(6px,1vw,14px);
+/* ---- mostrador ---- */
+.clock-wrap{
+  position:absolute;z-index:0;left:-8vw;top:56%;transform:translateY(-50%);
+  width:min(57vw,760px);aspect-ratio:1;filter:drop-shadow(0 16px 45px rgba(0,0,0,.3));
+  animation:clock-in 1.6s var(--ease) both;
 }
-.chess canvas{position:relative;z-index:2}
-.chess-poster{
-  position:absolute;inset:0;object-fit:contain;opacity:1;
-  transition:opacity .9s var(--ease);pointer-events:none;
+@keyframes clock-in{from{opacity:0}to{opacity:1}}
+.clock{width:100%;height:100%;overflow:visible}
+.clock .rim{fill:rgba(8,16,29,.1);stroke:#3f7fd5;stroke-width:2.5}
+.clock .rim2{fill:none;stroke:rgba(95,154,239,.24);stroke-width:1}
+.clock .tick{stroke:#4e8be1;stroke-width:1.25;opacity:.85}
+.clock .tick.major{stroke:#75a9ff;stroke-width:3}
+.clock .clock-label{font-family:var(--display);font-size:15px;font-weight:700;
+  letter-spacing:.18em;fill:#E7EDF8}
+.clock .hand{stroke:#d8e2f1;stroke-linecap:round;filter:drop-shadow(0 1px 4px rgba(0,0,0,.5))}
+.clock .hand.hour{stroke-width:8}
+.clock .hand.minute{stroke-width:4.5}
+.clock .hub{fill:#0e1d33;stroke:#a7caff;stroke-width:5}
+.clock .hub-core{fill:#4d94ff}
+
+/* ---- conteudo ---- */
+.hero .wrap{position:relative;z-index:3;display:flex;justify-content:flex-end}
+.hero-content{width:min(100%,590px)}
+.kicker{
+  display:flex;align-items:center;gap:13px;margin:0 0 20px;
+  font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:.23em;
+  text-transform:uppercase;color:#83B3FF;
 }
-.chess.on .chess-poster{opacity:0}
-.chess-glow{
-  position:absolute;left:50%;bottom:4%;width:118%;height:22%;transform:translateX(-50%);
-  background:radial-gradient(50% 50% at 50% 50%,rgba(208,140,94,.3) 0%,transparent 72%);
-  filter:blur(10px);pointer-events:none;z-index:1;
-}
+.kicker::before{content:"";width:27px;height:1px;background:#5B99FF;flex:0 0 auto}
 h1.hero-title{
-  font-family:var(--display);font-weight:700;color:var(--ink);
-  font-size:clamp(1.95rem,3.7vw,3.2rem);line-height:1.1;letter-spacing:-.028em;
-  max-width:none;margin:0;text-wrap:balance;
+  margin:0 0 22px;font-family:var(--display);font-weight:700;color:var(--ink);
+  font-size:clamp(2.05rem,4.1vw,3.7rem);line-height:1.08;letter-spacing:-.04em;
+  text-wrap:balance;
 }
-h1.hero-title .cop{color:var(--copper-lt)}
-h1.hero-title .l1{display:block}
-h1.hero-title .l2{display:block;margin:.16em auto 0;max-width:26ch}
-
+h1.hero-title .accent{color:#6FA4F8}
 .hero-sub{
-  margin:clamp(20px,2.2vw,28px) auto 0;max-width:48ch;
-  font-size:clamp(1rem,1.25vw,1.18rem);line-height:1.7;color:#B9C5DE;font-weight:400;
+  max-width:470px;margin:0 0 30px;color:#C1C9D6;
+  font-size:clamp(.95rem,1.15vw,1.05rem);line-height:1.65;font-weight:400;
 }
-.hero-inner .btn{margin-top:clamp(26px,3vw,38px)}
-.hero-fine{
-  margin-top:clamp(16px,1.8vw,22px);font-family:var(--display);font-size:9.5px;
-  font-weight:700;letter-spacing:.38em;text-transform:uppercase;color:#8294BC;
-}
-@media (max-width:560px){
-  .chess{width:clamp(170px,54vw,220px);height:clamp(175px,24vh,230px)}
-}
+.hero-content .btn{min-height:54px}
 
+/* ---- rodape da dobra ---- */
+.hero-foot{position:absolute;left:0;right:0;bottom:clamp(22px,4vh,40px);z-index:4}
+.hero-foot .wrap{display:flex;align-items:center;justify-content:space-between;gap:22px}
+.eventbox{display:flex;align-items:center;gap:14px}
+.eventbox .date{
+  font-family:var(--display);font-size:12.5px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:#EEF4FF;
+}
+.eventbox .place{
+  padding-left:14px;border-left:1px solid rgba(255,255,255,.22);
+  font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:#93A2BA;
+}
+.hero-signature{font-family:var(--display);font-size:9px;font-weight:700;
+  letter-spacing:.26em;color:#65748B}
+
+/* ---- celular: foto no lugar do mostrador, tudo a esquerda ---- */
 .hero-bg{display:none}
-
-
-/* ---- celular: foto de fundo + tudo alinhado à esquerda ---- */
 @media (max-width:900px){
-  .hero{min-height:100svh;display:flex;align-items:center;
-    padding-top:clamp(96px,13vh,118px);padding-bottom:clamp(34px,5vh,52px)}
-  .hero::before{display:none}
+  .hero{padding:clamp(100px,14vh,120px) 0 clamp(86px,12vh,104px)}
   .hero::after{
-    content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-    background:
-      linear-gradient(180deg,rgba(7,11,26,.55) 0%,rgba(7,11,26,.26) 20%,
-                      rgba(7,11,26,.68) 46%,rgba(7,11,26,.92) 74%,#070B1A 96%),
-      radial-gradient(75% 36% at 50% 6%,rgba(7,11,26,.65) 0%,transparent 72%);
+    background:linear-gradient(180deg,rgba(5,7,12,.5) 0%,rgba(5,7,12,.22) 20%,
+                               rgba(5,7,12,.68) 46%,rgba(5,7,12,.93) 74%,#05070C 96%);
   }
   .hero-bg{
-    display:block;position:absolute;inset:0;z-index:-2;
+    display:block;position:absolute;inset:0;z-index:0;
     width:100%;height:100%;object-fit:cover;object-position:54% 16%;
   }
-  .chess{display:none}
-
-  .hero-inner{align-items:flex-start;text-align:left;padding:0}
-  .hero-inner::before,.hero-inner::after{display:none}
-  h1.hero-title{max-width:none;text-wrap:pretty}
-  h1.hero-title .l2{max-width:none;margin-left:0;margin-right:0}
-  .hero-sub{max-width:32ch;margin-left:0;margin-right:0}
-  .hero-fine{align-self:flex-start}
+  .clock-wrap{display:none}
+  .hero .wrap{justify-content:flex-start}
+  .hero-content{width:100%}
+  h1.hero-title{font-size:clamp(1.95rem,8.6vw,2.9rem);line-height:1.06}
+  .hero-sub{max-width:34ch;font-size:.97rem;line-height:1.6}
+  .hero-signature{display:none}
+  .hero-foot .wrap{justify-content:flex-start}
+}
+@media (max-height:700px) and (min-width:901px){
+  .clock-wrap{width:min(62vw,760px)}
+  h1.hero-title{font-size:clamp(1.9rem,3.4vw,2.9rem)}
 }
 
 /* ============ FAIXA DE MARCA ============ */
@@ -497,30 +505,55 @@ form .btn{grid-column:1/-1;width:100%}
 <!-- ======================= 01 · HERO ======================= -->
 <section class="hero">
   <img class="hero-bg" src="img/hero-mobile.webp" alt="" aria-hidden="true" width="820" height="1500" fetchpriority="high">
+
+  <div class="clock-wrap" aria-hidden="true">
+    <svg class="clock" viewBox="0 0 600 600">
+      <defs>
+        <radialGradient id="dial">
+          <stop offset="0" stop-color="#132743" stop-opacity=".3"/>
+          <stop offset="1" stop-color="#07101d" stop-opacity=".1"/>
+        </radialGradient>
+      </defs>
+      <circle class="rim" cx="300" cy="300" r="286" fill="url(#dial)"/>
+      <circle class="rim2" cx="300" cy="300" r="260"/>
+      <g id="ticks"></g>
+      <text class="clock-label" x="160" y="73" text-anchor="middle">FOCO</text>
+      <text class="clock-label" x="430" y="148" text-anchor="middle">CRESCIMENTO</text>
+      <text class="clock-label" x="451" y="475" text-anchor="middle">PRÓXIMO NÍVEL</text>
+      <line class="hand hour" x1="300" y1="322" x2="418" y2="208"/>
+      <line class="hand minute" x1="300" y1="332" x2="469" y2="432"/>
+      <circle class="hub" cx="300" cy="300" r="19"/>
+      <circle class="hub-core" cx="300" cy="300" r="7"/>
+    </svg>
+  </div>
+
   <div class="wrap">
-    <div class="hero-inner">
-      <div class="chess rv-s" id="chess3d" aria-hidden="true">
-        <span class="chess-glow"></span>
-      </div>
-
-      <h1 class="hero-title rv" style="transition-delay:.08s">
-        <span class="l1">Você não precisa de outra empresa.</span>
-        <span class="l2">Precisa descobrir uma nova forma de criar receita <span class="cop">com o que já tem</span>.</span>
+    <div class="hero-content">
+      <p class="kicker rv">Clube do ROI · Um novo patamar</p>
+      <h1 class="hero-title rv" style="transition-delay:.07s">
+        Você não precisa de outra empresa. Precisa descobrir
+        <span class="accent">novas formas de gerar receita</span> que te levem ao próximo nível.
       </h1>
-
-      <p class="hero-sub rv" style="transition-delay:.16s">
-        Um jantar exclusivo para empresários que buscam networking estratégico, inteligência artificial
-        e novas oportunidades de crescimento.
+      <p class="hero-sub rv" style="transition-delay:.14s">
+        Seu negócio é um ativo. O próximo salto começa quando você enxerga oportunidades
+        além do modelo que já construiu.
       </p>
-
-      <button class="btn js-open rv" data-origin="hero" style="transition-delay:.28s">
-        <span>Quero fazer parte do Clube do ROI</span>
+      <button class="btn js-open rv" data-origin="hero" style="transition-delay:.2s">
+        <span>Solicitar interesse</span>
         <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
           <path d="M12.6 1 16.8 5l-4.2 4M16.3 5H1" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
+    </div>
+  </div>
 
-      <p class="hero-fine rv" style="transition-delay:.34s">Lugares limitados à mesa</p>
+  <div class="hero-foot">
+    <div class="wrap">
+      <p class="eventbox rv" style="transition-delay:.26s">
+        <span class="date">03 de novembro</span>
+        <span class="place">Alphaville · São Paulo</span>
+      </p>
+      <p class="hero-signature rv" style="transition-delay:.3s">CLUBE DO ROI</p>
     </div>
   </div>
 </section>
@@ -725,7 +758,13 @@ form .btn{grid-column:1/-1;width:100%}
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.6 4.8 4.8L19.5 7.2"/></svg>
           </div>
           <h2 class="display">Recebemos o seu <span class="cop">interesse</span>.</h2>
-          <p class="lead">Em breve entramos em contato com os próximos passos do Clube do ROI.</p>
+          <p class="lead">Estamos te levando para o WhatsApp para dar os próximos passos.</p>
+          <a class="btn js-whats" href="#" rel="noopener" style="margin-top:28px">
+            <span>Abrir conversa no WhatsApp</span>
+            <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+              <path d="M12.6 1 16.8 5l-4.2 4M16.3 5H1" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
@@ -778,8 +817,30 @@ form .btn{grid-column:1/-1;width:100%}
   /* ---------- Para onde vão os leads (vazio = guarda local) ---------- */
   var WEBHOOK_URL = '';
 
+  /* ---------- Para onde o lead é levado depois de enviar ---------- */
+  var WHATSAPP_URL = 'https://api.whatsapp.com/send/?phone=5511927074833&text=Ol%C3%A1%21+Tenho+interesse+em+fazer+parte+do+Clube+do+ROI+e+gostaria+de+saber+como+participar+dessa+experi%C3%AAncia+exclusiva+para+empres%C3%A1rios.&type=phone_number&app_absent=0';
+
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.getElementById('ano').textContent = new Date().getFullYear();
+
+  /* ---------- Marcações do mostrador ---------- */
+  (function(){
+    var g = document.getElementById('ticks');
+    if (!g) return;
+    var ns = 'http://www.w3.org/2000/svg';
+    for (var i = 0; i < 60; i++){
+      var a = (i * 6 - 90) * Math.PI / 180;
+      var major = i % 5 === 0;
+      var r1 = major ? 226 : 238, r2 = 259;
+      var l = document.createElementNS(ns, 'line');
+      l.setAttribute('x1', 300 + r1 * Math.cos(a));
+      l.setAttribute('y1', 300 + r1 * Math.sin(a));
+      l.setAttribute('x2', 300 + r2 * Math.cos(a));
+      l.setAttribute('y2', 300 + r2 * Math.sin(a));
+      l.setAttribute('class', 'tick' + (major ? ' major' : ''));
+      g.appendChild(l);
+    }
+  })();
 
   /* ---------- Header ---------- */
   var header = document.getElementById('header');
@@ -937,7 +998,11 @@ form .btn{grid-column:1/-1;width:100%}
     document.querySelector('.join-form-area').style.display = 'none';
     joinDone.classList.add('on');
     if (scrollIt) document.getElementById('lista').scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'center'});
+    // leva para a conversa no WhatsApp (o botão fica como alternativa manual)
+    setTimeout(function(){ location.href = WHATSAPP_URL; }, 1400);
   }
+
+  document.querySelectorAll('.js-whats').forEach(function(a){ a.href = WHATSAPP_URL; });
 
   bindForm(document.getElementById('join-form'), document.getElementById('form-msg'), function(){ showDone(true); });
   bindForm(document.getElementById('modal-form'), document.getElementById('modal-msg'), function(){
@@ -946,6 +1011,5 @@ form .btn{grid-column:1/-1;width:100%}
   });
 })();
 </script>
-<script type="module" src="js/chess.js"></script>
 </body>
 </html>
