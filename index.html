@@ -237,13 +237,22 @@ h1.hero-title .accent{color:#659ff8}
   .hero::after{background:linear-gradient(180deg,rgba(4,6,10,.02) 0%,rgba(4,6,10,.2) 24%,
                                           rgba(4,6,10,.72) 49%,#05070c 79%)}
   .clock-wrap{width:119vw;left:-44vw;top:36%;transform:translateY(-50%);opacity:.67}
+  /* no celular os rótulos caem atrás da headline e parecem erro: o mostrador vira só textura */
+  .clock .clock-label{display:none}
   .hero-content{left:24px;right:24px;top:auto;bottom:82px;transform:none;width:auto}
   .kicker{font-size:9px;margin-bottom:14px}
   h1.hero-title{font-size:clamp(34px,9.2vw,49px);line-height:1.06;margin-bottom:15px}
   .hero-sub{font-size:14px;line-height:1.55;margin-bottom:19px}
   .hero-content .btn{min-height:49px;padding:14px 18px;font-size:11px}
-  .eventbox{left:24px;bottom:20px}
+  .eventbox{left:24px;right:24px;bottom:20px;gap:11px}
+  /* em tela estreita a data quebrava em duas linhas: encolhe em vez de quebrar */
+  .eventbox .date{font-size:12px;letter-spacing:.11em;white-space:nowrap}
+  .eventbox .place{padding-left:11px;font-size:9.5px;letter-spacing:.11em;white-space:nowrap}
   .hero-signature{display:none}
+}
+@media (max-width:360px){
+  .eventbox .date{font-size:11px;letter-spacing:.08em}
+  .eventbox .place{font-size:8.5px;letter-spacing:.08em;padding-left:9px}
 }
 @media (max-height:680px) and (min-width:761px){
   .site-header{height:68px}
