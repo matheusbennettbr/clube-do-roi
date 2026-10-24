@@ -82,34 +82,34 @@ section[id],div[id]{scroll-margin-top:96px}
 /* ============ TIPOGRAFIA ============ */
 h1,h2,h3,h4{margin:0;font-weight:400;color:var(--ink);font-family:var(--display)}
 .display{
-  font-family:var(--display);font-weight:400;line-height:1.14;
-  letter-spacing:-.018em;color:var(--ink);
+  font-family:var(--display);font-weight:700;line-height:1.08;
+  letter-spacing:-.055em;color:var(--ink);
 }
-h1.display{font-size:clamp(2.05rem,3.75vw,3.3rem)}
-h2.display{font-size:clamp(1.8rem,3.1vw,2.7rem)}
+h1.display{font-size:clamp(34px,4.15vw,62px)}
+h2.display{font-size:clamp(30px,3.3vw,46px)}
 .cop{color:var(--copper-lt)}
 
 .tag{
   display:flex;align-items:center;gap:16px;margin:0 0 26px;
-  font-family:var(--display);font-size:11px;font-weight:700;
-  letter-spacing:.42em;text-transform:uppercase;color:var(--copper);
+  font-family:var(--display);font-size:13px;font-weight:700;
+  letter-spacing:.26em;text-transform:uppercase;color:var(--copper);
 }
 .tag i{font-style:normal;color:var(--dim);letter-spacing:.3em}
 .tag::after{content:"";flex:1 1 auto;height:1px;max-width:90px;
   background:linear-gradient(90deg,var(--hair-cu),transparent)}
 
-p{margin:0 0 1.3em;font-size:15.5px;line-height:1.85;color:var(--text)}
+p{margin:0 0 1.15em;font-size:clamp(14px,1.2vw,16px);line-height:1.65;color:#c1c9d6}
 p:last-child{margin-bottom:0}
-.lead{font-size:16.5px;line-height:1.8;color:#B5C1DB}
+.lead{font-size:clamp(15px,1.3vw,17px);line-height:1.6;color:#dde4ef}
 strong{color:#E6EBF6;font-weight:400}
 .quote{
-  font-family:var(--display);font-weight:400;color:var(--copper-lt);
-  font-size:clamp(1.1rem,1.6vw,1.32rem);line-height:1.6;letter-spacing:.01em;
+  font-family:var(--display);font-weight:700;color:var(--copper-lt);
+  font-size:clamp(18px,1.7vw,24px);line-height:1.35;letter-spacing:-.03em;
   padding-left:26px;border-left:1px solid var(--hair-cu);margin:30px 0;
 }
 .sig{
-  font-family:var(--display);font-weight:400;color:#D8E0F0;
-  font-size:clamp(1rem,1.3vw,1.14rem);line-height:1.7;letter-spacing:.03em;
+  font-family:var(--display);font-weight:700;color:#E8EDF7;
+  font-size:clamp(16px,1.4vw,20px);line-height:1.35;letter-spacing:-.035em;
 }
 
 /* ============ BOTÕES ============ */
@@ -148,157 +148,109 @@ strong{color:#E6EBF6;font-weight:400}
   .btn.line{width:auto;padding:12px 16px}
 }
 
-/* ============ HEADER ============ */
+/* ============ HEADER (igual ao layout enviado) ============ */
 .site-header{
-  position:fixed;top:0;left:0;right:0;z-index:60;padding:20px 0;
-  border-bottom:1px solid transparent;
-  transition:background .6s var(--ease),backdrop-filter .6s var(--ease),
-             border-color .6s var(--ease),padding .6s var(--ease),transform .7s var(--ease);
+  position:fixed;top:0;left:0;right:0;z-index:60;height:82px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(22px,5vw,76px);
+  background:rgba(4,6,10,.36);border-bottom:1px solid rgba(255,255,255,.07);
+  transition:background .5s var(--ease),backdrop-filter .5s var(--ease),transform .7s var(--ease);
 }
-.site-header.stuck{
-  background:rgba(7,11,26,.82);backdrop-filter:blur(16px) saturate(130%);
-  -webkit-backdrop-filter:blur(16px) saturate(130%);
-  border-bottom-color:var(--hair);padding:12px 0;
-}
+.site-header.stuck{background:rgba(4,6,10,.84);backdrop-filter:blur(14px) saturate(130%);
+  -webkit-backdrop-filter:blur(14px) saturate(130%)}
 .site-header.hidden{transform:translateY(-105%)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;gap:30px}
-.brand{display:block;flex:0 0 auto;line-height:0}
-.brand img{width:96px;transition:width .6s var(--ease)}
-.site-header.stuck .brand img{width:82px}
-.nav{display:flex;gap:40px}
-.nav a{
-  position:relative;font-family:var(--display);font-size:10.5px;font-weight:700;
-  letter-spacing:.3em;text-transform:uppercase;color:#9CABCB;padding:8px 0;
-  transition:color .45s var(--ease);
-}
-.nav a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;
-  background:var(--copper);transform:scaleX(0);transform-origin:left;
-  transition:transform .55s var(--ease)}
-.nav a:hover{color:#fff}
-.nav a:hover::after{transform:scaleX(1)}
-@media (max-width:1040px){.nav{display:none}}
-@media (max-width:440px){
-  .brand img{width:76px}
-  .header-inner .btn.line{padding:11px 16px;font-size:9.5px;letter-spacing:.16em}
-}
+.brand{display:inline-flex;align-items:center;line-height:0}
+.brand img{display:block;width:176px;height:auto;max-height:58px;object-fit:contain}
 
-/* ============ REVEAL ============ */
-.rv{opacity:0;transform:translateY(24px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
-.rv.in{opacity:1;transform:none}
-.rv-s{opacity:0;transform:scale(.985);transition:opacity 1.3s var(--ease),transform 1.5s var(--ease)}
-.rv-s.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .rv,.rv-s{opacity:1!important;transform:none!important;transition:none}
-  .btn::before{display:none}
-}
-
-/* ============ SUPERFÍCIE "CARTÃO" ============ */
-.card-surface{
-  position:relative;overflow:hidden;
-  background:
-    radial-gradient(120% 90% at 18% 6%,rgba(44,70,150,.95) 0%,rgba(22,38,92,.9) 38%,rgba(10,16,42,.98) 78%),
-    linear-gradient(145deg,#1B2C66 0%,#101A3E 48%,#080D22 100%);
-  border:1px solid rgba(255,255,255,.07);
-  box-shadow:0 60px 90px -60px rgba(0,0,0,.95);
-}
-.card-surface::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:
-    radial-gradient(70% 50% at 100% 100%,rgba(208,140,94,.14) 0%,transparent 60%),
-    linear-gradient(180deg,transparent 55%,rgba(5,8,20,.5) 100%);
-}
-
-/* ============ HERO ============ */
+/* ============ HERO (igual ao layout enviado) ============ */
 .hero{
-  position:relative;min-height:100svh;display:flex;align-items:center;overflow:clip;
-  padding:clamp(112px,14vh,150px) 0 clamp(104px,13vh,132px);
+  position:relative;height:100svh;min-height:540px;overflow:hidden;isolation:isolate;
   background:
-    radial-gradient(ellipse at 0% 62%,rgba(40,101,195,.42),transparent 44%),
-    radial-gradient(ellipse at 44% 108%,rgba(16,48,95,.45),transparent 56%),
-    linear-gradient(125deg,#0b1321 0%,#070b13 47%,#050810 100%);
+    radial-gradient(ellipse at 0% 65%,rgba(40,101,195,.45),transparent 42%),
+    radial-gradient(ellipse at 45% 105%,rgba(16,48,95,.45),transparent 55%),
+    linear-gradient(125deg,#0b1321 0%,#070b13 47%,#040508 100%);
 }
 .hero::after{
   content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(90deg,transparent 0%,rgba(3,5,9,.04) 36%,rgba(3,5,9,.74) 100%);
+  background:linear-gradient(90deg,transparent 0%,rgba(3,5,9,.03) 38%,rgba(3,5,9,.73) 100%);
 }
 
-/* ---- mostrador ---- */
 .clock-wrap{
-  position:absolute;z-index:0;left:-8vw;top:56%;transform:translateY(-50%);
-  width:min(57vw,760px);aspect-ratio:1;filter:drop-shadow(0 16px 45px rgba(0,0,0,.3));
-  animation:clock-in 1.6s var(--ease) both;
+  position:absolute;z-index:0;left:-7vw;top:51%;transform:translateY(-50%);
+  width:min(63vw,880px);aspect-ratio:1;filter:drop-shadow(0 16px 45px rgba(0,0,0,.25));
 }
-@keyframes clock-in{from{opacity:0}to{opacity:1}}
 .clock{width:100%;height:100%;overflow:visible}
 .clock .rim{fill:rgba(8,16,29,.1);stroke:#3f7fd5;stroke-width:2.5}
 .clock .rim2{fill:none;stroke:rgba(95,154,239,.24);stroke-width:1}
 .clock .tick{stroke:#4e8be1;stroke-width:1.25;opacity:.85}
 .clock .tick.major{stroke:#75a9ff;stroke-width:3}
-.clock .clock-label{font-family:var(--display);font-size:15px;font-weight:700;
-  letter-spacing:.18em;fill:#E7EDF8}
+.clock .clock-label{font-family:var(--display);font-size:16px;font-weight:700;
+  letter-spacing:.12em;fill:#f1f4fa}
 .clock .hand{stroke:#d8e2f1;stroke-linecap:round;filter:drop-shadow(0 1px 4px rgba(0,0,0,.5))}
 .clock .hand.hour{stroke-width:8}
 .clock .hand.minute{stroke-width:4.5}
+.clock .hand.second{stroke:#4f94ff;stroke-width:2}
 .clock .hub{fill:#0e1d33;stroke:#a7caff;stroke-width:5}
 .clock .hub-core{fill:#4d94ff}
 
-/* ---- conteudo ---- */
-.hero .wrap{position:relative;z-index:3;display:flex;justify-content:flex-end}
-.hero-content{width:min(100%,590px)}
+.hero-content{
+  position:absolute;z-index:3;right:clamp(30px,7.3vw,112px);top:50%;
+  transform:translateY(-50%);width:min(46%,620px);
+}
 .kicker{
-  display:flex;align-items:center;gap:13px;margin:0 0 20px;
+  display:flex;align-items:center;gap:12px;margin:0 0 20px;
   font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:.23em;
-  text-transform:uppercase;color:#83B3FF;
+  text-transform:uppercase;color:#83b3ff;
 }
-.kicker::before{content:"";width:27px;height:1px;background:#5B99FF;flex:0 0 auto}
+.kicker::before{content:"";width:27px;height:1px;background:#5b99ff;flex:0 0 auto}
 h1.hero-title{
-  margin:0 0 22px;font-family:var(--display);font-weight:700;color:var(--ink);
-  font-size:clamp(2.05rem,4.1vw,3.7rem);line-height:1.08;letter-spacing:-.04em;
-  text-wrap:balance;
+  margin:0 0 21px;font-family:var(--display);font-weight:700;color:var(--ink);
+  font-size:clamp(32px,3.15vw,47px);line-height:1.08;letter-spacing:-.045em;
 }
-h1.hero-title .accent{color:#6FA4F8}
+h1.hero-title .accent{color:#659ff8}
 .hero-sub{
-  max-width:470px;margin:0 0 30px;color:#C1C9D6;
-  font-size:clamp(.95rem,1.15vw,1.05rem);line-height:1.65;font-weight:400;
+  max-width:460px;margin:0 0 28px;color:#c1c9d6;
+  font-size:clamp(14px,1.2vw,16px);line-height:1.65;font-weight:400;
 }
-.hero-content .btn{min-height:54px}
+.hero-content .btn{min-height:54px;padding:17px 24px;font-size:13px;letter-spacing:.035em;
+  text-transform:none}
 
-/* ---- rodape da dobra ---- */
-.hero-foot{position:absolute;left:0;right:0;bottom:clamp(22px,4vh,40px);z-index:4}
-.hero-foot .wrap{display:flex;align-items:center;justify-content:space-between;gap:22px}
-.eventbox{display:flex;align-items:center;gap:14px}
-.eventbox .date{
-  font-family:var(--display);font-size:12.5px;font-weight:700;letter-spacing:.16em;
-  text-transform:uppercase;color:#EEF4FF;
+.eventbox{
+  position:absolute;left:clamp(22px,5vw,72px);bottom:clamp(22px,4vh,42px);z-index:4;
+  display:flex;align-items:center;gap:13px;margin:0;
 }
-.eventbox .place{
-  padding-left:14px;border-left:1px solid rgba(255,255,255,.22);
-  font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:.16em;
-  text-transform:uppercase;color:#93A2BA;
+.eventbox .date{font-family:var(--display);color:#eef4ff;font-size:13px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase}
+.eventbox .place{padding-left:13px;border-left:1px solid rgba(255,255,255,.22);
+  font-family:var(--display);color:#8e9cb1;font-size:10px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase}
+.hero-signature{
+  position:absolute;right:clamp(22px,5vw,72px);bottom:clamp(22px,4vh,42px);z-index:4;margin:0;
+  font-family:var(--display);color:#65748b;font-size:9px;font-weight:700;letter-spacing:.24em;
 }
-.hero-signature{font-family:var(--display);font-size:9px;font-weight:700;
-  letter-spacing:.26em;color:#65748B}
 
-/* ---- celular: o mostrador continua, deslocado, com o texto embaixo ---- */
-@media (max-width:900px){
-  .hero{padding:clamp(100px,14vh,120px) 0 clamp(86px,12vh,104px);align-items:flex-end}
-  .hero::after{
-    background:linear-gradient(180deg,rgba(5,7,12,.05) 0%,rgba(5,7,12,.28) 16%,
-                               rgba(5,7,12,.74) 34%,rgba(5,7,12,.95) 56%,#05070C 72%);
-  }
-  .clock-wrap{width:116vw;left:-42vw;top:29%;opacity:.55}
-  .clock .clock-label{font-size:19px}
-  .hero .wrap{justify-content:flex-start}
-  .hero-content{width:100%}
-  h1.hero-title{font-size:clamp(1.95rem,8.6vw,2.9rem);line-height:1.06}
-  .hero-sub{max-width:34ch;font-size:.97rem;line-height:1.6}
+@media (max-width:760px){
+  .site-header{height:70px;padding:0 19px}
+  .brand img{width:126px;max-height:46px}
+  .site-header .btn.line{padding:11px 13px;font-size:10px;letter-spacing:.06em;white-space:nowrap}
+  .hero{min-height:520px}
+  .hero::after{background:linear-gradient(180deg,rgba(4,6,10,.02) 0%,rgba(4,6,10,.2) 24%,
+                                          rgba(4,6,10,.72) 49%,#05070c 79%)}
+  .clock-wrap{width:119vw;left:-44vw;top:36%;transform:translateY(-50%);opacity:.67}
+  .hero-content{left:24px;right:24px;top:auto;bottom:82px;transform:none;width:auto}
+  .kicker{font-size:9px;margin-bottom:14px}
+  h1.hero-title{font-size:clamp(34px,9.2vw,49px);line-height:1.06;margin-bottom:15px}
+  .hero-sub{font-size:14px;line-height:1.55;margin-bottom:19px}
+  .hero-content .btn{min-height:49px;padding:14px 18px;font-size:11px}
+  .eventbox{left:24px;bottom:20px}
   .hero-signature{display:none}
-  .hero-foot .wrap{justify-content:flex-start}
 }
-@media (max-height:700px) and (min-width:901px){
-  .clock-wrap{width:min(62vw,760px)}
-  h1.hero-title{font-size:clamp(1.9rem,3.4vw,2.9rem)}
+@media (max-height:680px) and (min-width:761px){
+  .site-header{height:68px}
+  .hero-content{top:50%;transform:translateY(-50%)}
+  h1.hero-title{font-size:clamp(28px,2.7vw,40px)}
+  .hero-sub{margin-bottom:17px}
+  .clock-wrap{width:min(56vw,700px)}
 }
 
 /* ============ FAIXA DE MARCA ============ */
@@ -310,6 +262,7 @@ h1.hero-title .accent{color:#6FA4F8}
 .strip-inner span{display:flex;align-items:center;gap:14px}
 .strip-inner span::before{content:"";width:5px;height:5px;transform:rotate(45deg);
   border:1px solid var(--copper)}
+@media (max-width:760px){.strip{display:none}}
 
 /* ============ SEÇÃO 02 ============ */
 .turn{position:relative;padding:clamp(80px,9vw,128px) 0;overflow:clip}
@@ -370,9 +323,9 @@ h1.hero-title .accent{color:#6FA4F8}
 .pillar-ico{color:var(--copper);margin-bottom:22px;opacity:.9;
   transition:transform .7s var(--ease)}
 .pillar:hover .pillar-ico{transform:translateY(-3px)}
-.pillar h3{font-family:var(--display);font-size:12.5px;font-weight:700;letter-spacing:.2em;
+.pillar h3{font-family:var(--display);font-size:13px;font-weight:700;letter-spacing:.2em;
   text-transform:uppercase;color:#fff;line-height:1.7;margin-bottom:14px}
-.pillar p{font-size:13.5px;line-height:1.8;color:#8A99BA;margin:0}
+.pillar p{font-size:14px;line-height:1.55;color:#aab6cd;margin:0}
 
 .exp-foot{margin-top:clamp(44px,5vw,70px);display:grid;
   grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,4.5vw,76px);align-items:start}
@@ -482,18 +435,10 @@ form .btn{grid-column:1/-1;width:100%}
 
 <!-- ======================= HEADER ======================= -->
 <header class="site-header" id="header">
-  <div class="wrap header-inner">
-    <a href="#top" class="brand" aria-label="Clube do ROI — início">
-      <img src="img/logo-roi.webp" alt="Clube do ROI" width="1010" height="560">
-    </a>
-    <nav class="nav" aria-label="Navegação principal">
-      <a href="#o-clube">O Clube</a>
-      <a href="#experiencia">Experiência</a>
-      <a href="#diferenciais">Diferenciais</a>
-      <a href="#convite">Convite</a>
-    </nav>
-    <button class="btn line js-open" data-origin="header"><span>Quero participar</span></button>
-  </div>
+  <a href="#top" class="brand" aria-label="Clube do ROI">
+    <img src="img/logo-roi.webp" alt="Clube do ROI" width="1010" height="560">
+  </a>
+  <button class="btn line js-open" data-origin="header"><span>Solicitar interesse ↗</span></button>
 </header>
 
 <main id="top">
@@ -514,42 +459,32 @@ form .btn{grid-column:1/-1;width:100%}
       <text class="clock-label" x="160" y="73" text-anchor="middle">FOCO</text>
       <text class="clock-label" x="430" y="148" text-anchor="middle">CRESCIMENTO</text>
       <text class="clock-label" x="451" y="475" text-anchor="middle">PRÓXIMO NÍVEL</text>
-      <line class="hand hour" x1="300" y1="322" x2="418" y2="208"/>
-      <line class="hand minute" x1="300" y1="332" x2="469" y2="432"/>
+      <line id="hour" class="hand hour" x1="300" y1="320" x2="300" y2="175"/>
+      <line id="minute" class="hand minute" x1="300" y1="330" x2="300" y2="105"/>
+      <line id="second" class="hand second" x1="300" y1="350" x2="300" y2="75"/>
       <circle class="hub" cx="300" cy="300" r="19"/>
       <circle class="hub-core" cx="300" cy="300" r="7"/>
     </svg>
   </div>
 
-  <div class="wrap">
-    <div class="hero-content">
-      <p class="kicker rv">Clube do ROI · Um novo patamar</p>
-      <h1 class="hero-title rv" style="transition-delay:.07s">
-        Você não precisa de outra empresa. Precisa descobrir
-        <span class="accent">novas formas de gerar receita</span> que te levem ao próximo nível.
-      </h1>
-      <p class="hero-sub rv" style="transition-delay:.14s">
-        Seu negócio é um ativo. O próximo salto começa quando você enxerga oportunidades
-        além do modelo que já construiu.
-      </p>
-      <button class="btn js-open rv" data-origin="hero" style="transition-delay:.2s">
-        <span>Solicitar interesse</span>
-        <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
-          <path d="M12.6 1 16.8 5l-4.2 4M16.3 5H1" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-    </div>
+  <div class="hero-content">
+    <p class="kicker">Clube do ROI · Um novo patamar</p>
+    <h1 class="hero-title">
+      Você não precisa de outra empresa. Precisa descobrir
+      <span class="accent">novas formas de gerar receita</span> que te levem ao próximo nível.
+    </h1>
+    <p class="hero-sub">
+      Seu negócio é um ativo. O próximo salto começa quando você enxerga oportunidades
+      além do modelo que já construiu.
+    </p>
+    <button class="btn js-open" data-origin="hero"><span>Solicitar interesse ↗</span></button>
   </div>
 
-  <div class="hero-foot">
-    <div class="wrap">
-      <p class="eventbox rv" style="transition-delay:.26s">
-        <span class="date">03 de novembro</span>
-        <span class="place">Alphaville · São Paulo</span>
-      </p>
-      <p class="hero-signature rv" style="transition-delay:.3s">CLUBE DO ROI</p>
-    </div>
-  </div>
+  <p class="eventbox">
+    <span class="date">03 de novembro</span>
+    <span class="place">Alphaville · São Paulo</span>
+  </p>
+  <p class="hero-signature">CLUBE DO ROI</p>
 </section>
 
 <!-- faixa -->
@@ -570,31 +505,28 @@ form .btn{grid-column:1/-1;width:100%}
         Oportunidades que você <span class="cop">ainda não enxergou</span>.
       </h2>
       <p class="lead rv" style="transition-delay:.12s">
-        <strong>Sua empresa já tem estrutura. Seus próximos resultados podem estar nas oportunidades
-        que você ainda não explorou.</strong>
+        <strong>Sua empresa já tem estrutura. O próximo resultado pode estar no que
+        você ainda não explorou.</strong>
       </p>
-      <p class="rv" style="transition-delay:.15s">
-        Não é apenas sobre o que você já construiu. É sobre tudo o que ainda pode construir a partir disso.
+      <p class="quote rv" style="transition-delay:.16s">
+        E se a sua próxima grande fonte de receita estiver dentro do que você já tem?
       </p>
-      <p class="quote rv" style="transition-delay:.21s">
-        E se a sua próxima grande fonte de receita estiver dentro daquilo que você já tem?
+      <p class="rv" style="transition-delay:.2s">
+        O próximo salto nem sempre exige começar do zero. Exige as ideias certas,
+        as pessoas certas e um olhar novo sobre o que você construiu.
       </p>
-      <p class="rv" style="transition-delay:.24s">
-        O próximo salto nem sempre exige começar do zero. Exige as ideias certas, as pessoas certas
-        e as oportunidades que você ainda não enxerga sozinho.
-      </p>
-      <p class="sig rv" style="transition-delay:.3s">É exatamente essa mentalidade que move o Clube do ROI.</p>
+      <p class="sig rv" style="transition-delay:.24s">É essa mentalidade que move o Clube do ROI.</p>
     </div>
 
     <aside class="turn-panel card-surface rv-s" style="transition-delay:.1s">
       <div class="pn">
         <div class="pn-num">02</div>
-        <h3>O que costuma estar parado dentro de empresas que já funcionam</h3>
+        <h3>O que costuma estar parado em empresas que já funcionam</h3>
         <ul>
-          <li>Novos modelos de negócio sobre a estrutura que já existe</li>
-          <li>Ofertas que o mercado já pede e ainda não foram criadas</li>
-          <li>Parcerias estratégicas com quem atende o mesmo cliente</li>
-          <li>Automação e inteligência artificial aplicadas à operação</li>
+          <li>Novos modelos sobre a estrutura que já existe</li>
+          <li>Ofertas que o mercado já pede</li>
+          <li>Parcerias com quem atende o mesmo cliente</li>
+          <li>IA e automação na operação</li>
         </ul>
         <p class="pn-foot">O próximo salto</p>
       </div>
@@ -609,11 +541,11 @@ form .btn{grid-column:1/-1;width:100%}
       <div>
         <p class="tag rv"><i>03</i> A experiência</p>
         <h2 class="display rv" style="transition-delay:.06s">Muito além de <span class="cop">um jantar</span>.</h2>
-        <p class="sig rv" style="transition-delay:.1s">Uma mesa. Grandes conexões. Novas perspectivas para os seus negócios.</p>
+        <p class="sig rv" style="transition-delay:.1s">Uma mesa. Grandes conexões. Novas perspectivas.</p>
       </div>
       <p class="rv" style="transition-delay:.14s">
-        Para quem entende que crescer não é trabalhar mais — é pensar melhor, construir as relações
-        certas e enxergar oportunidades de alto valor.
+        Para quem entende que crescer não é trabalhar mais — é pensar melhor e estar
+        entre as pessoas certas.
       </p>
     </div>
 
@@ -627,7 +559,7 @@ form .btn{grid-column:1/-1;width:100%}
           </svg>
         </div>
         <h3>Networking<br>avançado</h3>
-        <p>Relacionamentos com empresários que viram parcerias, negócios e oportunidades reais.</p>
+        <p>Relacionamentos que viram parcerias e negócios.</p>
       </article>
 
       <article class="pillar rv" style="transition-delay:.06s">
@@ -638,7 +570,7 @@ form .btn{grid-column:1/-1;width:100%}
           </svg>
         </div>
         <h3>Novas fontes<br>de receita</h3>
-        <p>Como transformar a estrutura e o conhecimento que sua empresa já tem em faturamento novo.</p>
+        <p>Faturamento novo a partir do que sua empresa já tem.</p>
       </article>
 
       <article class="pillar rv" style="transition-delay:.12s">
@@ -651,7 +583,7 @@ form .btn{grid-column:1/-1;width:100%}
           </svg>
         </div>
         <h3>Inteligência artificial<br>e automação</h3>
-        <p>Tecnologia e processos inteligentes para ganhar eficiência e abrir possibilidades no negócio.</p>
+        <p>Tecnologia e processos inteligentes na sua operação.</p>
       </article>
 
       <article class="pillar rv" style="transition-delay:.18s">
@@ -663,16 +595,16 @@ form .btn{grid-column:1/-1;width:100%}
           </svg>
         </div>
         <h3>Mentalidade<br>de crescimento</h3>
-        <p>Um ambiente de quem busca evolução e sabe o valor de estar cercado por quem vai longe.</p>
+        <p>Um ambiente de quem busca evolução.</p>
       </article>
     </div>
 
     <div class="exp-foot">
       <p class="lead rv">
-        Mais que um jantar: um ambiente criado para estimular ideias e aproximar as pessoas certas.
+        Mais que um jantar: um ambiente feito para aproximar as pessoas certas.
       </p>
       <p class="sig rv" style="transition-delay:.08s">
-        Uma conversa pode mudar uma decisão. Uma conexão pode abrir uma porta.
+        Uma conversa muda uma decisão. Uma conexão abre uma porta.
       </p>
     </div>
   </div>
@@ -695,12 +627,11 @@ form .btn{grid-column:1/-1;width:100%}
 
       <div class="invite-copy">
         <p class="lead rv" style="transition-delay:.1s">
-          <strong>O próximo nível da sua empresa pode começar com as pessoas que você ainda não conhece
-          e as oportunidades que ainda não enxergou.</strong>
+          <strong>O próximo nível da sua empresa pode começar com as pessoas que você
+          ainda não conhece.</strong>
         </p>
         <p class="rv" style="transition-delay:.14s">
-          É para quem não quer apenas manter o negócio funcionando: quer ampliar a visão, encontrar
-          novas receitas e construir conexões que façam sentido para o futuro da empresa.
+          Para quem quer mais do que manter o negócio funcionando.
         </p>
         <p class="sig rv" style="transition-delay:.22s">Seu próximo grande movimento pode começar à mesa.</p>
         <button class="btn js-open rv" data-origin="convite" style="transition-delay:.26s">
@@ -721,8 +652,7 @@ form .btn{grid-column:1/-1;width:100%}
           <p class="tag">Lista de interessados</p>
           <h2 class="display">Entre para a <span class="cop">lista</span>.</h2>
           <p class="lead">
-            Deixe seus dados e descubra como fazer parte dessa experiência exclusiva.
-            O número de lugares à mesa é limitado — entramos em contato com os selecionados.
+            Lugares limitados. Deixe seus dados e falamos com você.
           </p>
           <form id="join-form" novalidate>
             <div class="field">
@@ -752,7 +682,7 @@ form .btn{grid-column:1/-1;width:100%}
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.6 4.8 4.8L19.5 7.2"/></svg>
           </div>
           <h2 class="display">Recebemos o seu <span class="cop">interesse</span>.</h2>
-          <p class="lead">Estamos te levando para o WhatsApp para dar os próximos passos.</p>
+          <p class="lead">Estamos te levando para o WhatsApp.</p>
           <a class="btn js-whats" href="#" rel="noopener" style="margin-top:28px">
             <span>Abrir conversa no WhatsApp</span>
             <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
@@ -786,7 +716,7 @@ form .btn{grid-column:1/-1;width:100%}
     </button>
     <p class="tag">Clube do ROI</p>
     <h2 class="display" id="modal-title">Um lugar <span class="cop">à mesa</span>.</h2>
-    <p class="lead">Entre para a lista de interessados e descubra como fazer parte dessa experiência exclusiva.</p>
+    <p class="lead">Lugares limitados. Deixe seus dados e falamos com você.</p>
     <form id="modal-form" novalidate>
       <div class="field"><input name="nome" type="text" placeholder="Nome completo" autocomplete="name" required aria-label="Nome completo"></div>
       <div class="field"><input name="whatsapp" type="tel" inputmode="tel" placeholder="WhatsApp com DDD" autocomplete="tel" required aria-label="WhatsApp"></div>
@@ -817,7 +747,7 @@ form .btn{grid-column:1/-1;width:100%}
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.getElementById('ano').textContent = new Date().getFullYear();
 
-  /* ---------- Marcações do mostrador ---------- */
+  /* ---------- Mostrador: marcações e ponteiros em movimento ---------- */
   (function(){
     var g = document.getElementById('ticks');
     if (!g) return;
@@ -834,6 +764,21 @@ form .btn{grid-column:1/-1;width:100%}
       l.setAttribute('class', 'tick' + (major ? ' major' : ''));
       g.appendChild(l);
     }
+    function hand(id, angle, len){
+      var r = (angle - 90) * Math.PI / 180, e = document.getElementById(id);
+      if (!e) return;
+      e.setAttribute('x2', 300 + len * Math.cos(r));
+      e.setAttribute('y2', 300 + len * Math.sin(r));
+    }
+    function update(){
+      var d = new Date(new Date().toLocaleString('en-US', {timeZone: 'America/Sao_Paulo'}));
+      var h = d.getHours(), m = d.getMinutes(), sec = d.getSeconds(), ms = d.getMilliseconds();
+      hand('hour', ((h % 12) + m / 60) * 30, 145);
+      hand('minute', (m + sec / 60) * 6, 210);
+      hand('second', (sec + ms / 1000) * 6, 238);
+    }
+    update();
+    if (!reduce) setInterval(update, 50);
   })();
 
   /* ---------- Header ---------- */
