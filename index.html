@@ -747,8 +747,11 @@ form .btn{grid-column:1/-1;width:100%}
 (function(){
   'use strict';
 
-  /* ---------- Para onde vão os leads (vazio = guarda local) ---------- */
-  var WEBHOOK_URL = '';
+  /* ---------- Para onde vão os leads ----------
+     Cole aqui o endereço da FONTE do Clube do ROI no Falume, no formato:
+     https://falume.com.br/api/webhooks/lead/lf_xxxxxxxxxxxxxxxxxxxxxxxx
+     Vazio = o lead só vai para o WhatsApp e para o navegador, não entra no CRM. */
+  var WEBHOOK_URL = 'https://falume.com.br/api/webhooks/lead/lf_a57af1e5eee6c19d5d3e2297d9665a847b2b';
 
   /* ---------- Para onde o lead é levado depois de enviar ---------- */
   var WHATSAPP_URL = 'https://api.whatsapp.com/send/?phone=5511927074833&text=Ol%C3%A1%21+Tenho+interesse+em+fazer+parte+do+Clube+do+ROI+e+gostaria+de+saber+como+participar+dessa+experi%C3%AAncia+exclusiva+para+empres%C3%A1rios.&type=phone_number&app_absent=0';
@@ -828,6 +831,13 @@ form .btn{grid-column:1/-1;width:100%}
   function getUtm(){
     try{ return JSON.parse(sessionStorage.getItem('roi_utm') || '{}'); }catch(e){ return {}; }
   }
+  /* _fbp/_fbc ajudam o Falume a casar a venda na CAPI; vazio quando nao ha Pixel */
+  function getCookie(nome){
+    try{
+      var m = document.cookie.match(new RegExp('(?:^|; )' + nome + '=([^;]*)'));
+      return m ? decodeURIComponent(m[1]) : '';
+    }catch(e){ return ''; }
+  }
 
   /* ---------- Modal ---------- */
   var modal = document.getElementById('modal');
@@ -902,14 +912,19 @@ form .btn{grid-column:1/-1;width:100%}
       var original = label.textContent;
       btn.disabled = true; label.textContent = 'Enviando...';
 
+      /* nomes dos campos no contrato do Falume: name / email / phone / ts.
+         quem identifica a pagina no CRM e a FONTE do webhook, nao um campo daqui. */
       var data = {
-        nome: form.nome.value.trim(),
+        name: form.nome.value.trim(),
         email: form.email.value.trim(),
-        whatsapp: form.whatsapp.value.trim(),
+        phone: form.whatsapp.value.trim(),
         empresa: form.empresa ? form.empresa.value.trim() : '',
         origem: form.id === 'modal-form' ? ('modal:' + (modal.getAttribute('data-origin') || '')) : 'secao-lista',
-        pagina: location.href,
-        enviado_em: new Date().toISOString()
+        landing_page: location.href,
+        referrer: document.referrer || '',
+        fbp: getCookie('_fbp'),
+        fbc: getCookie('_fbc'),
+        ts: new Date().toISOString()
       };
       var utm = getUtm();
       Object.keys(utm).forEach(function(k){ data[k] = utm[k]; });
