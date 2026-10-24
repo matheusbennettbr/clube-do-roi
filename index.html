@@ -236,12 +236,42 @@ strong{color:#E6EBF6;font-weight:400}
 .hero-inner::before{left:0}
 .hero-inner::after{right:0}
 
-.hero-marks{
-  display:flex;align-items:center;gap:clamp(16px,2.4vw,30px);margin-bottom:clamp(22px,2.6vw,34px);
-  font-family:var(--display);font-size:9.5px;letter-spacing:.42em;text-transform:uppercase;color:#8294BC;
+/* ---- peça de xadrez 3D (sólido de revolução por lâminas) ---- */
+.chess{
+  position:relative;width:clamp(118px,11vw,150px);height:clamp(158px,15vw,200px);
+  margin:0 auto clamp(18px,2.2vw,30px);
+  perspective:900px;perspective-origin:50% 42%;
 }
-.hero-marks b{font-weight:400;color:var(--copper)}
-.hero-marks i{font-style:normal;display:block;width:clamp(26px,4vw,64px);height:1px;background:var(--hair-cu)}
+.chess-piece{
+  position:absolute;inset:0;transform-style:preserve-3d;
+  animation:chess-spin 17s linear infinite, chess-float 6s ease-in-out infinite alternate;
+}
+.chess-blade{
+  position:absolute;inset:0;background:center/contain no-repeat;
+  opacity:.22;backface-visibility:visible;
+  transform:rotateY(calc(var(--i) * 12.86deg));
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 210'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23EFBE92'/%3E%3Cstop offset='.45' stop-color='%23C27F52'/%3E%3Cstop offset='1' stop-color='%236F4027'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='url(%23g)'%3E%3Cpath d='M22 200 L26 188 L34 182 L40 174 L46 150 L48 140 L38 134 L36 128 L46 122 L48 112 L42 104 L38 92 L40 84 L46 78 L54 73 L66 73 L74 78 L80 84 L82 92 L78 104 L72 112 L74 122 L84 128 L82 134 L72 140 L74 150 L80 174 L86 182 L94 188 L98 200 Z'/%3E%3Ccircle cx='60' cy='62' r='11'/%3E%3C/g%3E%3C/svg%3E");
+}
+.chess-cross{
+  position:absolute;left:50%;top:4%;width:30%;height:26%;
+  transform-style:preserve-3d;transform:translateX(-50%);
+}
+.chess-cross i{
+  position:absolute;inset:0;background:center/contain no-repeat;
+  opacity:.72;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 60'%3E%3Cdefs%3E%3ClinearGradient id='c' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23FFE2C4'/%3E%3Cstop offset='1' stop-color='%23C07E52'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23c)' d='M16 4h8v14h12v8H24v26h-8V26H4v-8h12z'/%3E%3C/svg%3E");
+}
+.chess-cross i:nth-child(2){transform:rotateY(90deg)}
+.chess-glow{
+  position:absolute;left:50%;bottom:-6%;width:150%;height:26%;transform:translateX(-50%);
+  background:radial-gradient(50% 50% at 50% 50%,rgba(208,140,94,.34) 0%,transparent 70%);
+  filter:blur(6px);pointer-events:none;
+}
+@keyframes chess-spin{from{transform:rotateX(-9deg) rotateY(0)}to{transform:rotateX(-9deg) rotateY(360deg)}}
+@keyframes chess-float{from{translate:0 -5px}to{translate:0 5px}}
+@media (prefers-reduced-motion:reduce){
+  .chess-piece{animation:none;transform:rotateX(-9deg) rotateY(22deg)}
+}
 
 h1.hero-title{
   font-family:var(--display);font-weight:600;color:var(--ink);
@@ -481,6 +511,27 @@ form .btn{grid-column:1/-1;width:100%}
 <section class="hero">
   <div class="wrap">
     <div class="hero-inner">
+      <div class="chess rv-s" aria-hidden="true">
+        <span class="chess-glow"></span>
+        <div class="chess-piece">
+          <span class="chess-blade" style="--i:0"></span>
+          <span class="chess-blade" style="--i:1"></span>
+          <span class="chess-blade" style="--i:2"></span>
+          <span class="chess-blade" style="--i:3"></span>
+          <span class="chess-blade" style="--i:4"></span>
+          <span class="chess-blade" style="--i:5"></span>
+          <span class="chess-blade" style="--i:6"></span>
+          <span class="chess-blade" style="--i:7"></span>
+          <span class="chess-blade" style="--i:8"></span>
+          <span class="chess-blade" style="--i:9"></span>
+          <span class="chess-blade" style="--i:10"></span>
+          <span class="chess-blade" style="--i:11"></span>
+          <span class="chess-blade" style="--i:12"></span>
+          <span class="chess-blade" style="--i:13"></span>
+          <span class="chess-cross"><i></i><i></i></span>
+        </div>
+      </div>
+
       <h1 class="hero-title rv" style="transition-delay:.08s">
         <span class="l1">Você não precisa de outra empresa.</span>
         <span class="l2">Precisa descobrir uma nova forma de criar receita <span class="cop">com o que já tem</span>.</span>
@@ -489,10 +540,6 @@ form .btn{grid-column:1/-1;width:100%}
       <p class="hero-sub rv" style="transition-delay:.16s">
         Um jantar exclusivo para empresários que buscam networking estratégico, inteligência artificial
         e novas oportunidades de crescimento.
-      </p>
-
-      <p class="hero-note rv" style="transition-delay:.22s">
-        Não é apenas sobre o que você já construiu. É sobre tudo o que ainda pode construir a partir disso.
       </p>
 
       <button class="btn js-open rv" data-origin="hero" style="transition-delay:.28s">
@@ -527,6 +574,9 @@ form .btn{grid-column:1/-1;width:100%}
       <p class="lead rv" style="transition-delay:.12s">
         <strong>Sua empresa já tem estrutura. Seus próximos resultados podem estar nas oportunidades
         que você ainda não explorou.</strong>
+      </p>
+      <p class="rv" style="transition-delay:.14s">
+        Não é apenas sobre o que você já construiu. É sobre tudo o que ainda pode construir a partir disso.
       </p>
       <p class="rv" style="transition-delay:.15s">
         Você já investiu tempo, dinheiro e energia para construir seu negócio. Já conquistou clientes,
