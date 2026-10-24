@@ -16,16 +16,10 @@
 <meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="preload" href="fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 
 <style>
 /* ============ FONTES ============ */
-@font-face{
-  font-family:'Jost';
-  src:url('fonts/jost.woff2') format('woff2');
-  font-style:normal;font-weight:100 900;font-display:swap;
-}
 @font-face{
   font-family:'InterVar';
   src:url('fonts/inter.woff2') format('woff2');
@@ -49,8 +43,8 @@
   --hair-cu:rgba(208,140,94,.34);
   --maxw:1180px;
   --ease:cubic-bezier(.16,1,.3,1);
-  --display:'Jost',-apple-system,'Segoe UI',sans-serif;
-  --sans:'InterVar',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --display:'Helvetica Neue',Helvetica,Arial,'InterVar',sans-serif;
+  --sans:'Helvetica Neue',Helvetica,Arial,'InterVar',sans-serif;
 }
 
 /* ============ BASE ============ */
@@ -65,7 +59,7 @@ html{
 ::-webkit-scrollbar-thumb:hover{background:rgba(208,140,94,.45)}
 body{
   margin:0;background:var(--bg);color:var(--text);
-  font-family:var(--sans);font-size:16px;line-height:1.78;font-weight:300;
+  font-family:var(--sans);font-size:16px;line-height:1.78;font-weight:400;
   -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
   overflow-x:clip;
 }
@@ -86,10 +80,10 @@ section[id],div[id]{scroll-margin-top:96px}
 @media (max-width:640px){.wrap{width:calc(100% - 40px)}}
 
 /* ============ TIPOGRAFIA ============ */
-h1,h2,h3,h4{margin:0;font-weight:300;color:var(--ink);font-family:var(--display)}
+h1,h2,h3,h4{margin:0;font-weight:400;color:var(--ink);font-family:var(--display)}
 .display{
-  font-family:var(--display);font-weight:200;line-height:1.14;
-  letter-spacing:.012em;color:var(--ink);
+  font-family:var(--display);font-weight:400;line-height:1.14;
+  letter-spacing:-.018em;color:var(--ink);
 }
 h1.display{font-size:clamp(2.05rem,3.75vw,3.3rem)}
 h2.display{font-size:clamp(1.8rem,3.1vw,2.7rem)}
@@ -97,7 +91,7 @@ h2.display{font-size:clamp(1.8rem,3.1vw,2.7rem)}
 
 .tag{
   display:flex;align-items:center;gap:16px;margin:0 0 26px;
-  font-family:var(--display);font-size:11px;font-weight:400;
+  font-family:var(--display);font-size:11px;font-weight:700;
   letter-spacing:.42em;text-transform:uppercase;color:var(--copper);
 }
 .tag i{font-style:normal;color:var(--dim);letter-spacing:.3em}
@@ -109,12 +103,12 @@ p:last-child{margin-bottom:0}
 .lead{font-size:16.5px;line-height:1.8;color:#B5C1DB}
 strong{color:#E6EBF6;font-weight:400}
 .quote{
-  font-family:var(--display);font-weight:300;color:var(--copper-lt);
+  font-family:var(--display);font-weight:400;color:var(--copper-lt);
   font-size:clamp(1.1rem,1.6vw,1.32rem);line-height:1.6;letter-spacing:.01em;
   padding-left:26px;border-left:1px solid var(--hair-cu);margin:30px 0;
 }
 .sig{
-  font-family:var(--display);font-weight:300;color:#D8E0F0;
+  font-family:var(--display);font-weight:400;color:#D8E0F0;
   font-size:clamp(1rem,1.3vw,1.14rem);line-height:1.7;letter-spacing:.03em;
 }
 
@@ -122,7 +116,7 @@ strong{color:#E6EBF6;font-weight:400}
 .btn{
   position:relative;display:inline-flex;align-items:center;justify-content:center;gap:16px;
   padding:19px 34px;overflow:hidden;isolation:isolate;
-  font-family:var(--display);font-size:11.5px;font-weight:500;
+  font-family:var(--display);font-size:11.5px;font-weight:700;
   letter-spacing:.28em;text-transform:uppercase;color:#0A1026;
   background:linear-gradient(100deg,#E9B68E 0%,#D08C5E 48%,#B4714A 100%);
   transition:transform .6s var(--ease),box-shadow .6s var(--ease),color .4s var(--ease);
@@ -173,7 +167,7 @@ strong{color:#E6EBF6;font-weight:400}
 .site-header.stuck .brand img{width:82px}
 .nav{display:flex;gap:40px}
 .nav a{
-  position:relative;font-family:var(--display);font-size:10.5px;font-weight:400;
+  position:relative;font-family:var(--display);font-size:10.5px;font-weight:700;
   letter-spacing:.3em;text-transform:uppercase;color:#9CABCB;padding:8px 0;
   transition:color .45s var(--ease);
 }
@@ -252,45 +246,55 @@ strong{color:#E6EBF6;font-weight:400}
   background:radial-gradient(50% 50% at 50% 50%,rgba(208,140,94,.3) 0%,transparent 72%);
   filter:blur(10px);pointer-events:none;z-index:1;
 }
-@media (max-width:560px){
-  .chess{width:clamp(170px,54vw,220px);height:clamp(175px,24vh,230px)}
-}
-
 h1.hero-title{
-  font-family:var(--display);font-weight:600;color:var(--ink);
-  font-size:clamp(1.85rem,3.7vw,3.2rem);line-height:1.08;letter-spacing:-.018em;
+  font-family:var(--display);font-weight:700;color:var(--ink);
+  font-size:clamp(1.95rem,3.7vw,3.2rem);line-height:1.1;letter-spacing:-.028em;
   max-width:none;margin:0;text-wrap:balance;
 }
 h1.hero-title .cop{color:var(--copper-lt)}
 h1.hero-title .l1{display:block}
-h1.hero-title .l2{display:block;margin:.16em auto 0;max-width:26ch;text-wrap:balance}
+h1.hero-title .l2{display:block;margin:.16em auto 0;max-width:26ch}
 
 .hero-sub{
   margin:clamp(20px,2.2vw,28px) auto 0;max-width:48ch;
-  font-size:clamp(1rem,1.25vw,1.18rem);line-height:1.72;color:#B5C1DB;font-weight:300;
-}
-.hero-note{
-  margin:clamp(16px,1.8vw,22px) auto 0;max-width:48ch;
-  font-family:var(--display);font-size:clamp(.82rem,1vw,.94rem);letter-spacing:.02em;
-  line-height:1.7;color:#9BA9C9;
+  font-size:clamp(1rem,1.25vw,1.18rem);line-height:1.7;color:#B9C5DE;font-weight:400;
 }
 .hero-inner .btn{margin-top:clamp(26px,3vw,38px)}
 .hero-fine{
   margin-top:clamp(16px,1.8vw,22px);font-family:var(--display);font-size:9.5px;
-  letter-spacing:.38em;text-transform:uppercase;color:#8294BC;
+  font-weight:700;letter-spacing:.38em;text-transform:uppercase;color:#8294BC;
 }
-@media (max-width:900px){.hero{padding-top:122px}}
 @media (max-width:560px){
-  .hero-inner{padding-inline:4px}
-  .hero-inner::before,.hero-inner::after{display:none}
-  h1.hero-title{max-width:none}
-  h1.hero-title .l2{max-width:none}
-  .hero-marks{letter-spacing:.26em;font-size:9px;gap:12px}
-  .hero-marks .opt{display:none}
-  .hero-sub{max-width:34ch}
+  .chess{width:clamp(170px,54vw,220px);height:clamp(175px,24vh,230px)}
 }
-@media (max-width:430px){
-  .hero-inner .btn{font-size:10px;letter-spacing:.1em;padding-inline:14px}
+
+.hero-bg{display:none}
+
+
+/* ---- celular: foto de fundo + tudo alinhado à esquerda ---- */
+@media (max-width:900px){
+  .hero{min-height:100svh;display:flex;align-items:center;
+    padding-top:clamp(96px,13vh,118px);padding-bottom:clamp(34px,5vh,52px)}
+  .hero::before{display:none}
+  .hero::after{
+    content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:
+      linear-gradient(180deg,rgba(7,11,26,.55) 0%,rgba(7,11,26,.26) 20%,
+                      rgba(7,11,26,.68) 46%,rgba(7,11,26,.92) 74%,#070B1A 96%),
+      radial-gradient(75% 36% at 50% 6%,rgba(7,11,26,.65) 0%,transparent 72%);
+  }
+  .hero-bg{
+    display:block;position:absolute;inset:0;z-index:-2;
+    width:100%;height:100%;object-fit:cover;object-position:54% 16%;
+  }
+  .chess{display:none}
+
+  .hero-inner{align-items:flex-start;text-align:left;padding:0}
+  .hero-inner::before,.hero-inner::after{display:none}
+  h1.hero-title{max-width:none;text-wrap:pretty}
+  h1.hero-title .l2{max-width:none;margin-left:0;margin-right:0}
+  .hero-sub{max-width:32ch;margin-left:0;margin-right:0}
+  .hero-fine{align-self:flex-start}
 }
 
 /* ============ FAIXA DE MARCA ============ */
@@ -362,7 +366,7 @@ h1.hero-title .l2{display:block;margin:.16em auto 0;max-width:26ch;text-wrap:bal
 .pillar-ico{color:var(--copper);margin-bottom:22px;opacity:.9;
   transition:transform .7s var(--ease)}
 .pillar:hover .pillar-ico{transform:translateY(-3px)}
-.pillar h3{font-family:var(--display);font-size:12.5px;font-weight:500;letter-spacing:.2em;
+.pillar h3{font-family:var(--display);font-size:12.5px;font-weight:700;letter-spacing:.2em;
   text-transform:uppercase;color:#fff;line-height:1.7;margin-bottom:14px}
 .pillar p{font-size:13.5px;line-height:1.8;color:#8A99BA;margin:0}
 
@@ -412,10 +416,10 @@ form{margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:1px;text-ali
 .field.full{grid-column:1/-1}
 .field input{
   width:100%;padding:18px 20px;background:transparent;border:0;
-  color:#fff;font-family:var(--sans);font-size:15px;font-weight:300;
+  color:#fff;font-family:var(--sans);font-size:15px;font-weight:400;
   transition:background .45s var(--ease);
 }
-.field input::placeholder{color:#64739A;font-weight:300}
+.field input::placeholder{color:#64739A;font-weight:400}
 .field input:focus{outline:none;background:rgba(21,36,82,.45)}
 .field:focus-within{box-shadow:inset 0 -1px 0 var(--copper)}
 .field input[aria-invalid="true"]{background:rgba(169,102,60,.13)}
@@ -492,6 +496,7 @@ form .btn{grid-column:1/-1;width:100%}
 
 <!-- ======================= 01 · HERO ======================= -->
 <section class="hero">
+  <img class="hero-bg" src="img/hero-mobile.webp" alt="" aria-hidden="true" width="820" height="1500" fetchpriority="high">
   <div class="wrap">
     <div class="hero-inner">
       <div class="chess rv-s" id="chess3d" aria-hidden="true">

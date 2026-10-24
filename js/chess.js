@@ -1,12 +1,18 @@
 // Rei de xadrez em 3D real (WebGL) — geometria de revolução, material físico e luz de estúdio.
-import * as THREE from './three.module.min.js';
+// No celular o hero usa a foto: nem o three.js é baixado.
 
 const host = document.getElementById('chess3d');
-if (host && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  init(host);
+const podeRodar =
+  host &&
+  innerWidth > 900 &&
+  !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+  getComputedStyle(host).display !== 'none';
+
+if (podeRodar) {
+  import('./three.module.min.js').then((THREE) => init(THREE, host)).catch(() => {});
 }
 
-function init(host) {
+function init(THREE, host) {
   let renderer;
   try {
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'high-performance' });
